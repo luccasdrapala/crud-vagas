@@ -8,7 +8,7 @@
 
     <h2 class="mt-2">Cadastrar vaga</h2>
 
-    <form action="" method="post">
+    <form method="post">
 
         <div class="form-group">
             <label for="titulo">Titulo da Vaga</label>
