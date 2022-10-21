@@ -34,5 +34,19 @@ class Vaga {
      */
     public $data;
 
+    /**
+     * método responsável por cadastrr uma vaga no bd
+     * @return boolean
+     */
+    public function cadastrar(){
+        //definir data
+        $this->data = date ('Y-m-d H:i:s');
+
+        //inserir vaga no banco
+
+        //atribuir o id da vaga na instancia
+
+        //retornar sucesso
+    }
 }
 
