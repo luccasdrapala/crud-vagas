@@ -11,6 +11,7 @@ if(isset($_POST['titulo'],$_POST['descricao'], $_POST['ativo'])){
     $obVaga->titulo    = $_POST['titulo'];
     $obVaga->descricao = $_POST['descricao'];
     $obVaga->ativo     = $_POST['ativo'];
+    $obVaga->cadastrar();
 
     echo '<pre>';
     print_r($obVaga);
