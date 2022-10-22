@@ -34,4 +34,22 @@ class Database {
         }
     }
 
+    /**
+     * metodo responsavel por inserir dados no banco
+     * @param array [field => value]
+     * @return integer (id inserido)
+     */
+    public function insert($values){
+        //dados da query
+        $fields = array_keys($values);
+        // print_r($fields);
+        $binds = array_pad([], count($fields),'?'); //seta um array de determinado tamanho, caso seja menor ele cria no tamanho setado (array, tamanho, novo valor caso tamanho do array seja menor que o tamanho)
+
+        //monta a query
+        $query = 'INSERT INTO '. $this->table.' ('.implode(',', $fields).') VALUES ('.implode(',', $binds).')';
+
+        echo $query;
+        exit;
+    }
+
 }
