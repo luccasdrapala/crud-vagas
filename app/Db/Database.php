@@ -35,21 +35,38 @@ class Database {
     }
 
     /**
+     * Metodo responsavel por executar queries dentro do bd
+     * @param string $query
+     * @param array $params
+     * @return PDOStatement
+     */
+    public function execute(string $query, array $params){
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->execute($params);
+            return $statement;
+        } catch(PDOException $e) {
+            die('ERROR: '. $e->getmessage());
+        }
+    }
+
+    /**
      * metodo responsavel por inserir dados no banco
-     * @param array [field => value]
+     * @param array $values [field => value]
      * @return integer (id inserido)
      */
-    public function insert($values){
+    public function insert(array $values):int { //:int aguarda um int como retorno
         //dados da query
         $fields = array_keys($values);
-        // print_r($fields);
         $binds = array_pad([], count($fields),'?'); //seta um array de determinado tamanho, caso seja menor ele cria no tamanho setado (array, tamanho, novo valor caso tamanho do array seja menor que o tamanho)
 
         //monta a query
         $query = 'INSERT INTO '. $this->table.' ('.implode(',', $fields).') VALUES ('.implode(',', $binds).')';
 
-        echo $query;
-        exit;
+        //executa o insert
+        $this->execute($query, array_values($values));
+
+        return $this->connection->lastInsertId();
     }
 
 }
