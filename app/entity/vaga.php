@@ -52,14 +52,18 @@ class Vaga {
                         'data'      =>$this->data 
                     ]);
 
-        echo '<pre>';
-        print_r($obDatabase);
-        echo '</pre>';
+        return true;
+    }
+    /**
+     * Método responsável por obter as vagas do banco de dados
+     * @param string $where
+     * @param string $order
+     * @param string $limit
+     * @return array 
+     */
 
-        //atribuir o id da vaga na instancia
-
-
-        //retornar sucesso
+    public static function getVagas($where = null, $order = null, $limit = null) {
+        return( new Database('vagas'))->select($where, $order, $limit);
     }
 }
 

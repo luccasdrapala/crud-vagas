@@ -69,4 +69,19 @@ class Database {
         return $this->connection->lastInsertId();
     }
 
+    /**
+     * Método responsável por efetuar o select no banco de dados
+     * @param string $where
+     * @param string $order
+     * @param string $limit
+     * @return PDOStatement 
+     */
+    public function select($where = null, $order = null, $limit = null){
+        //dados da query
+        $where = strlen($where) ? 'WHERE '.$where : '';
+        $where = strlen($order) ? 'ORDER BY '.$order : '';
+        $where = strlen($limit) ? 'LIMIT '.$limit : '';
+
+        $query = 'SELECT * FROM'. $this->table. 'Where';
+    }
 }
