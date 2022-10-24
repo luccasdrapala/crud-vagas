@@ -83,7 +83,8 @@ class Database {
         $where = strlen($limit) ? 'LIMIT '.$limit : '';
 
         //montando a query
-        $query = 'SELECT * FROM '. $this->table. $where.' '.$order.' '.$limit.' ';
+        $query = 'SELECT * FROM '. $this->table . $where. ' ' .$order. ' ' .$limit. ' ';
+        echo $query;
 
         return $this->execute($query);
     }
