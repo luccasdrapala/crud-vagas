@@ -64,8 +64,13 @@ class Vaga {
      */
 
     public static function getVagas($where = null, $order = null, $limit = null) {
-        return( new Database('vagas'))->select($where, $order, $limit)
+        $teste = ( new Database('vagas'))->select($where, $order, $limit)
         ->fetchAll(PDO::FETCH_CLASS, self::class);
+        echo '<pre>';
+        print_r($teste);
+        echo '</pre>';
+        return $teste;
+
     }
 }
 
