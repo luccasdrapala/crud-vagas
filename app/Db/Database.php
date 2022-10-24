@@ -40,7 +40,7 @@ class Database {
      * @param array $params
      * @return PDOStatement
      */
-    public function execute(string $query, array $params){
+    public function execute(string $query, $params = []){
         try{
             $statement = $this->connection->prepare($query);
             $statement->execute($params);
@@ -82,6 +82,9 @@ class Database {
         $where = strlen($order) ? 'ORDER BY '.$order : '';
         $where = strlen($limit) ? 'LIMIT '.$limit : '';
 
-        $query = 'SELECT * FROM'. $this->table. 'Where';
+        //montando a query
+        $query = 'SELECT * FROM '. $this->table. $where.' '.$order.' '.$limit.' ';
+
+        return $this->execute($query);
     }
 }

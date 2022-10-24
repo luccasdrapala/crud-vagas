@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 use App\Db\Database;
+use PDO;
 
 class Vaga {
 
@@ -63,7 +64,8 @@ class Vaga {
      */
 
     public static function getVagas($where = null, $order = null, $limit = null) {
-        return( new Database('vagas'))->select($where, $order, $limit);
+        return( new Database('vagas'))->select($where, $order, $limit)
+        ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 }
 
