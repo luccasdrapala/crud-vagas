@@ -1,3 +1,19 @@
+<?php
+
+    $resultados = '';
+    foreach($vagas as $vaga){
+        $resultados .= '<tr>
+                          <td>'. $vaga->id .'</td>  
+                          <td>'. $vaga->titulo .'</td>  
+                          <td>'. $vaga->descricao .'</td>  
+                          <td>'. $vaga->ativo .'</td>  
+                          <td>'. $vaga->data .'</td>  
+                          <td></td>
+                       </tr>';
+    }
+
+?>
+
 <main>
 
     <section>
@@ -20,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+                <?=$resultados?>
             </tbody>
         </table>
 
