@@ -3,12 +3,19 @@
     $resultados = '';
     foreach($vagas as $vaga){
         $resultados .= '<tr>
-                          <td>'. $vaga->id .'</td>  
+                          <th>'. $vaga->id .'</th>  
                           <td>'. $vaga->titulo .'</td>  
                           <td>'. $vaga->descricao .'</td>  
-                          <td>'. $vaga->ativo .'</td>  
-                          <td>'. $vaga->data .'</td>  
-                          <td></td>
+                          <td>'. ($vaga->ativo == 's' ? 'Ativo': 'inativo') .'</td>  
+                          <td>'. date('Y-m-d - H:i:s', strtotime($vaga->data)) .'</td>  
+                          <td>
+                            <a href="editar.php?id='.$vaga->id.'">
+                                <button type="button" class="btn btn-success">Editar</button>  
+                            </a>
+                            <a href="excluir.php?id='.$vaga->id.'">
+                                <button type="button" class="btn btn-danger">Excluir</button>  
+                            </a>
+                          </td>
                        </tr>';
     }
 
