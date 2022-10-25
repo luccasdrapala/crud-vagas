@@ -40,7 +40,7 @@ class Database {
      * @param array $params
      * @return PDOStatement
      */
-    public function execute(string $query, $params = []){
+    public function execute($query, $params = []){
         try{
             $statement = $this->connection->prepare($query);
             $statement->execute($params);
@@ -74,16 +74,17 @@ class Database {
      * @param string $where
      * @param string $order
      * @param string $limit
+     * @param string $fields
      * @return PDOStatement 
      */
-    public function select($where = null, $order = null, $limit = null){
-        //dados da query
+    public function select($where = null, $order = null, $limit = null, $fields = '*'){
+        //dados da query 
         $where = strlen($where) ? 'WHERE '.$where : '';
-        $where = strlen($order) ? 'ORDER BY '.$order : '';
-        $where = strlen($limit) ? 'LIMIT '.$limit : '';
+        $order = strlen($order) ? 'ORDER BY '.$order : '';
+        $limit = strlen($limit) ? 'LIMIT '.$limit : '';
 
         //montando a query
-        $query = 'SELECT * FROM '. $this->table . $where. ' ' .$order. ' ' .$limit. ' ';
+        $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
         echo $query;
 
         return $this->execute($query);
