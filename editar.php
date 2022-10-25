@@ -11,7 +11,12 @@ if(!isset($_GET['id']) or !is_numeric($_GET['id'])){
 }
 
 $obVaga = Vaga::getVaga($_GET['id']);
-print_r($obVaga);
+
+//validação da vaga
+if(!$obVaga instanceof Vaga) {
+    header('Location: index.php?status=erro');
+}
+
 
 //validação do post
 if(isset($_POST['titulo'],$_POST['descricao'], $_POST['ativo'])){

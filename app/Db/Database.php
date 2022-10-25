@@ -85,8 +85,7 @@ class Database {
 
         //montando a query
         $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
-        echo $query;
-
+        
         return $this->execute($query);
     }
 }
