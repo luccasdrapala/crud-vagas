@@ -42,7 +42,7 @@ class Vaga {
      */
     public function cadastrar(){
         //definir data
-        $this->data = date ('Y-m-d H:i:s');
+        $this->data = date('Y-m-d H:i:s');
 
         //inserir vaga no banco
         $obDatabase = new Database('vagas');
@@ -61,6 +61,9 @@ class Vaga {
      * @return boolean
      */
     public function atualizar(){
+        //redefine a data
+        $this->data = date('Y-m-d H:i:s');
+        
         return (new Database('vagas'))->update('id = '.$this->id, [
                                                                     'titulo'    =>$this->titulo,
                                                                     'descricao' =>$this->descricao,

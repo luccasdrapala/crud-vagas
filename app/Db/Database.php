@@ -98,16 +98,9 @@ class Database {
     public function update($where, $values){
         //dados da query
         $fields = array_keys($values); //transforma chave do array no valor e sua chave fica numerica
-        echo '<pre>';
-        print_r($values);
-        echo '</pre><br>';
-        echo '<pre>';
-        print_r($fields);
-        echo '</pre>';
-
+        
         //montando query
-        $query = 'UPDATE '.$this->table.' SET titulo=?, descricao=? WHERE '.$where; 
-        echo $query;
-        exit;
+        $query = 'UPDATE '.$this->table.' SET '.implode('=?,', $fields).'=? WHERE '.$where; 
+        $this->execute($query, array_values($values));
     }
 }
