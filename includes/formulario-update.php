@@ -12,12 +12,12 @@
 
         <div class="form-group">
             <label for="titulo">Titulo da Vaga</label>
-            <input type="text" name="titulo" id="titulo" class="form-control">
+            <input type="text" name="titulo" id="titulo" class="form-control" value="<?=$obVaga->titulo?>">
         </div>
 
         <div class="form-group mt-2">
             <label for="descricao">Descrição</label>
-            <textarea name="descricao" id="descricao" class="form-control" rows="4"></textarea>
+            <textarea name="descricao" id="descricao" class="form-control" rows="4"><?=$obVaga->descricao?></textarea>
         </div>
 
         <div class="form-group mt-2">
@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group mt-3">
-            <button class="btn btn-success" type="submit">Cadastrar</button>
+            <button class="btn btn-success" type="submit" <?=$obVaga->ativo == 'n' ? 'checked' : ''?>>Cadastrar</button>
         </div>
     </form>
 </main>

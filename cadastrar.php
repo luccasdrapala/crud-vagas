@@ -4,6 +4,8 @@ require __DIR__.'/vendor/autoload.php';
 
 use \App\Entity\Vaga;
 
+define('TITLE', 'Cadastrar Vaga');
+
 //validação do post
 if(isset($_POST['titulo'],$_POST['descricao'], $_POST['ativo'])){
 
