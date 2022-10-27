@@ -47,14 +47,28 @@ class Vaga {
         //inserir vaga no banco
         $obDatabase = new Database('vagas');
         $this-> id =$obDatabase->insert([
-                        'titulo'    =>$this->titulo,
-                        'descricao' =>$this->descricao,
-                        'ativo'     =>$this->ativo,
-                        'data'      =>$this->data 
-                    ]);
+                            'titulo'    =>$this->titulo,
+                            'descricao' =>$this->descricao,
+                            'ativo'     =>$this->ativo,
+                            'data'      =>$this->data 
+                        ]);
 
         return true;
     }
+
+    /**
+     * Método responsável por atualizar um item pela sua id no bd
+     * @return boolean
+     */
+    public function atualizar(){
+        return (new Database('vagas'))->update('id = '.$this->id, [
+                                                                    'titulo'    =>$this->titulo,
+                                                                    'descricao' =>$this->descricao,
+                                                                    'ativo'     =>$this->ativo,
+                                                                    'data'      =>$this->data 
+                                                                    ]);
+    }
+
     /**
      * Método responsável por obter as vagas do banco de dados
      * @param string $where
@@ -62,7 +76,6 @@ class Vaga {
      * @param string $limit
      * @return array 
      */
-
     public static function getVagas($where = null, $order = null, $limit = null) {
         return ( new Database('vagas'))->select($where, $order, $limit)
         ->fetchAll(PDO::FETCH_CLASS, self::class);

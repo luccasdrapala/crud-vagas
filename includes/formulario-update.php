@@ -31,13 +31,13 @@
 
             <div class="form-check form-check-inline">
                 <label class="form-control">
-                    <input type="radio" name="ativo" value="n">Inativo
+                    <input type="radio" name="ativo" value="n" <?=$obVaga->ativo == 'n' ? 'checked' : ''?>>Inativo
                 </label>
             </div>
         </div>
 
         <div class="form-group mt-3">
-            <button class="btn btn-success" type="submit" <?=$obVaga->ativo == 'n' ? 'checked' : ''?>>Cadastrar</button>
+            <button class="btn btn-success" type="submit">Cadastrar</button>
         </div>
     </form>
 </main>
