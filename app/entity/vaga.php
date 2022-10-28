@@ -73,6 +73,14 @@ class Vaga {
     }
 
     /**
+     * Metodo responsável por excluir a vaga
+     * 
+     */
+    public function excluir($id) {
+        return (new Database('vagas'))->delete('id = '.$this->id);
+    }
+
+    /**
      * Método responsável por obter as vagas do banco de dados
      * @param string $where
      * @param string $order

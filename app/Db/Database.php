@@ -89,6 +89,10 @@ class Database {
         return $this->execute($query);
     }
 
+    public function delete($where) {
+        $query = 'DELETE FROM '.
+    }
+
     /**
      * Metodo responsavel por executar update no banco
      * @param string $where
