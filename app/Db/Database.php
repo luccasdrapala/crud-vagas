@@ -90,7 +90,7 @@ class Database {
     }
 
     public function delete($where) {
-        $query = 'DELETE FROM '.
+        $query = 'DELETE FROM '. $this->table.' WHERE '.$where; 
     }
 
     /**
