@@ -90,7 +90,13 @@ class Database {
     }
 
     public function delete($where) {
+        //monta a query
         $query = 'DELETE FROM '. $this->table.' WHERE '.$where; 
+
+        //executa a query
+        $this->execute($query);
+
+        return true;
     }
 
     /**

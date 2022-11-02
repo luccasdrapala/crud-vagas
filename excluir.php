@@ -15,16 +15,16 @@ $obVaga = Vaga::getVaga($_GET['id']);
 
 //validação da vaga
 if(!$obVaga instanceof Vaga) {
-    header('Location: index.php?status=erro');
+    header('Location: index.php?status=error');
+    exit;
 }
 
-
 //validação do post
-if(isset($_POST['titulo'])){
+if(isset($_POST['excluir'])){
 
     $obVaga->excluir();
 
-    header('location: index.php?status=success');
+    header('Location: index.php?status=success');
     exit;
 }
 

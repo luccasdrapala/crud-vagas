@@ -76,7 +76,7 @@ class Vaga {
      * Metodo responsável por excluir a vaga
      * 
      */
-    public function excluir($id) {
+    public function excluir() {
         return (new Database('vagas'))->delete('id = '.$this->id);
     }
 
